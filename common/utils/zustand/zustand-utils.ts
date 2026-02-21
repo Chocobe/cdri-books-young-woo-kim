@@ -64,19 +64,10 @@ export const createWithPersist = <TStore>() => (
         skipHydration: true,
         storage: createJSONStorage<TStore>(() => window.localStorage),
         merge: (persistedState = {}, currentState) => {
-          console.group('merge()');
-          console.log('persistedState: ', persistedState);
-          console.log('currentState: ', currentState);
-
-          const result = merge(
+          return merge(
             cloneDeep(currentState) as object,
             cloneDeep(persistedState) as object
           ) as TStore;
-
-          console.log('result: ', result);
-          console.groupEnd();
-
-          return result;
         },
         ...options,
       }
