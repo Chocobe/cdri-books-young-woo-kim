@@ -238,6 +238,14 @@ Next.js 는 JS 빌트인 함수인 `fetch` 를 확장하여 제공하지만, 본
 - `tailwind-merge` : Tailwindcss className 들을 병합하여 충돌을 해소 해줍니다.
 - `clsx` + `tailwind-merge` 를 통합한 `cn` 유틸을 만들 예정이며, Tailwindcss 의 편의성을 높일 수 있습니다.
 
+<br />
+
+## 04-05. es-toolkit
+
+Javascript 유틸리티 라이브러리 입니다.
+
+lodash 대비 97% 작은 번들 사이즈와 Tree shaking, 빠른 속도를 제공합니다.
+
 
 
 <br /><hr /><br />
@@ -275,6 +283,20 @@ Figma 에서 확인한 Design system 을 Tailwindcss theme 으로 적용하였�
 - utility className 적용
   - `theme-text-*` className 은 `primary` color 명칭과 겹치는 관계로, 제가 임의로 부여한 명칭입니다.
   - 실제 업무였다면, 디자이너 동료분께 확인 및 도움이 필요한 부분입니다.
+
+<br />
+
+## 05-03. zustand middleware 구조화
+
+zustand middleware 에 대한 구조화 유틸을 작성하여 스토어를 생성합니다.
+
+- `common/utils/zustand/zustand-utils.ts`
+- 유틸 구현 흔적 :
+  - `common/stores/_counterStore/_useCounterStore.ts`
+  - `common/test/_samples/_Counter.tsx`
+  - `common/test/_samples/_Counter.spec.tsx`
+- `create()` : devtools + immer
+- `createWithPersist()` : persist + devtools + immer
 
 
 
@@ -314,10 +336,10 @@ Figma 에서 확인한 Design system 을 Tailwindcss theme 으로 적용하였�
   - [x] `cn()` 함수 유닛 테스트하기
   - [x] theme 구성하기
 - zustand 구성하기
-  - [ ] 브랜치명: `config/zustand`
-  - [ ] middleware 구조화 하기
-  - [ ] zustand module mocking 하기
-  - [ ] sampleStore 만들고 테스트하기
+  - [x] 브랜치명: `config/zustand`
+  - [x] middleware 구조화 하기
+  - [x] zustand module mocking 하기
+  - [x] sampleStore 만들고 테스트하기
 - axios 구성하기
   - [ ] 브랜치명: `config/axios`
   - [ ] axios 설치하기
