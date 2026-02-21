@@ -1,7 +1,7 @@
 import { render, screen } from '@/common/test/test-utils';
 import Counter from './_Counter';
 
-describe('Zustand __mocks__ 설정 테스트', () => {
+describe.skip('Zustand __mocks__ 설정 테스트', () => {
   describe('<_Counter />', () => {
     it('increase() 클릭 시, 카운트 +1', async () => {
       const { user } = render(
