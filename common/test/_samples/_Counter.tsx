@@ -18,7 +18,7 @@ function Counter() {
 
   return (
     <div>
-      <div>
+      <div data-testid="Counter-count">
         Count: {count}
       </div>
 
