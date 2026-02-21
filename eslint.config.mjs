@@ -31,6 +31,7 @@ const eslintConfig = defineConfig([
       '@typescript-eslint/no-unused-vars': ['warn', {
         varsIgnorePattern: '^_',
       }],
+      '@typescript-eslint/no-empty-object-type': 'off',
     },
   },
   globalIgnores([
