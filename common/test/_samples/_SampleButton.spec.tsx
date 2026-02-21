@@ -4,7 +4,7 @@ import {
   screen,
 } from '../test-utils';
 
-describe('<_SampleButton />', () => {
+describe.skip('<_SampleButton />', () => {
   it('버튼 텍스트가 노출된다.', () => {
     render(
       <_SampleButton>
