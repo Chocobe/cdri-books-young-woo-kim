@@ -246,6 +246,8 @@ Next.js 는 JS 빌트인 함수인 `fetch` 를 확장하여 제공하지만, 본
 
 # 05. 강조 하고 싶은 기능
 
+## 05-01. UI 컴포넌트 라이브러리 미사용
+
 `Shadcn UI` 와 같은 컴포넌트 라이브러리는 사용하지 않고, 직접 구현하였습니다.
 - 첫번째 평가 기준: `UI 구현력 및 디자인 완성도 (재사용 가능한 컴포넌트 설계)`
 
@@ -254,9 +256,25 @@ Next.js 는 JS 빌트인 함수인 `fetch` 를 확장하여 제공하지만, 본
 ## 05-01. Git branch 접두사
 
 개발 성격에 따라 branch 에 접두사를 사용하였습니다.
+
+이를 통해 `git log` 에서 브랜치 명으로 저의 작업 흐름을 대략적으로 파악하실 수 있습니다.
+
 - `config/*` : 설정 관련 작업
 - `ui/*` : 공통 UI 컴포넌트 구현 작업
 - `feature/*` : 기능 구현 작업
+
+
+<br />
+
+## 05-02. Tailwindcss theme 에 Design system 반영
+
+Figma 에서 확인한 Design system 을 Tailwindcss theme 으로 적용하였습니다.
+
+- theme 설정 파일: `app/globals.css`
+- color theme 적용
+- utility className 적용
+  - `theme-text-*` className 은 `primary` color 명칭과 겹치는 관계로, 제가 임의로 부여한 명칭입니다.
+  - 실제 업무였다면, 디자이너 동료분께 확인 및 도움이 필요한 부분입니다.
 
 
 
@@ -292,9 +310,9 @@ Next.js 는 JS 빌트인 함수인 `fetch` 를 확장하여 제공하지만, 본
   - [x] type-check 실행 스크립트 추가
 - Tailwind 구성하기
   - [x] 브랜치명: `config/tailwindcss`
-  - [ ] `cn.ts` 유틸 함수 모듈 만들기
-  - [ ] `cn()` 함수 유닛 테스트하기
-  - [ ] theme 구성하기
+  - [x] `cn.ts` 유틸 함수 모듈 만들기
+  - [x] `cn()` 함수 유닛 테스트하기
+  - [x] theme 구성하기
 - zustand 구성하기
   - [ ] 브랜치명: `config/zustand`
   - [ ] zustand module mocking 하기
