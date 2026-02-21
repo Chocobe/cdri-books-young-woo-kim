@@ -291,7 +291,7 @@ Next.js 는 JS 빌트인 함수인 `fetch` 를 확장하여 제공하지만, 본
   - [x] rules 설정
   - [x] type-check 실행 스크립트 추가
 - Tailwind 구성하기
-  - [ ] 브랜치명: `config/tailwindcss`
+  - [x] 브랜치명: `config/tailwindcss`
   - [ ] `cn.ts` 유틸 함수 모듈 만들기
   - [ ] `cn()` 함수 유닛 테스트하기
   - [ ] theme 구성하기
