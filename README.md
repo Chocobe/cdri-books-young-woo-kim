@@ -346,9 +346,10 @@ zustand middleware 에 대한 구조화 유틸을 작성하여 스토어를 생�
   - [x] axios instance 및 interceptor 구현하기
   - [x] API request 제네릭 타입 만들기
 - React Query 구성하기
-  - [ ] 브랜치명: `config/react-query`
-  - [ ] `RootQueryClient.tsx` 만들기
-  - [ ] devtools 설치하기
+  - [x] 브랜치명: `config/react-query`
+  - [x] `common/utils/react-query/QueryClientProviderImpl.tsx` 만들기
+  - [x] devtools 설치하기
+  - [x] vitest 테스트 환경에 QueryClientProvider 추가하기
 - MSW 구성하기 (개발환경 전용)
   - [ ] 브랜치명: `config/msw`
   - [ ] API 관련 통합 테스트를 위한 `MSW` 설치하기

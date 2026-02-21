@@ -1,7 +1,9 @@
 'use client';
 
+import apis from '@/common/apis/apis';
 // import { useCounterStore } from '@/common/stores/counterStore/useCounterStore';
 import { usePersistCountStore } from '@/common/stores/_counterStore/_useCounterStore';
+import { useQuery } from '@tanstack/react-query';
 import { useEffect } from 'react';
 
 function Counter() {
@@ -15,6 +17,13 @@ function Counter() {
   useEffect(() => {
     usePersistCountStore.persist.rehydrate();
   }, []);
+
+  useQuery({
+    queryKey: ['react query 설정 테스트'],
+    queryFn: () => {
+      return apis.get('/todos');
+    },
+  });
 
   return (
     <div>
