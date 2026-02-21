@@ -315,12 +315,17 @@ Figma 에서 확인한 Design system 을 Tailwindcss theme 으로 적용하였�
   - [x] theme 구성하기
 - zustand 구성하기
   - [ ] 브랜치명: `config/zustand`
+  - [ ] middleware 구조화 하기
   - [ ] zustand module mocking 하기
   - [ ] sampleStore 만들고 테스트하기
 - axios 구성하기
   - [ ] 브랜치명: `config/axios`
   - [ ] axios 설치하기
   - [ ] API request 제네릭 타입 만들기
+- React Query 구성하기
+  - [ ] 브랜치명: `config/react-query`
+  - [ ] `RootQueryClient.tsx` 만들기
+  - [ ] devtools 설치하기
 - MSW 구성하기 (개발환경 전용)
   - [ ] 브랜치명: `config/msw`
   - [ ] API 관련 통합 테스트를 위한 `MSW` 설치하기
