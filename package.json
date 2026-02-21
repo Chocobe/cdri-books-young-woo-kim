@@ -12,11 +12,15 @@
     "type-check": "tsc --noEmit --project tsconfig.json"
   },
   "dependencies": {
+    "@redux-devtools/extension": "^3.3.0",
     "clsx": "^2.1.1",
+    "es-toolkit": "^1.44.0",
+    "immer": "^11.1.4",
     "next": "16.1.6",
     "react": "19.2.3",
     "react-dom": "19.2.3",
-    "tailwind-merge": "^3.5.0"
+    "tailwind-merge": "^3.5.0",
+    "zustand": "^5.0.11"
   },
   "devDependencies": {
     "@stylistic/eslint-plugin": "^5.9.0",
