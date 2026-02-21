@@ -341,9 +341,10 @@ zustand middleware 에 대한 구조화 유틸을 작성하여 스토어를 생�
   - [x] zustand module mocking 하기
   - [x] sampleStore 만들고 테스트하기
 - axios 구성하기
-  - [ ] 브랜치명: `config/axios`
-  - [ ] axios 설치하기
-  - [ ] API request 제네릭 타입 만들기
+  - [x] 브랜치명: `config/axios`
+  - [x] axios 설치하기
+  - [x] axios instance 및 interceptor 구현하기
+  - [x] API request 제네릭 타입 만들기
 - React Query 구성하기
   - [ ] 브랜치명: `config/react-query`
   - [ ] `RootQueryClient.tsx` 만들기
