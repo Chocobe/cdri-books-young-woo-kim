@@ -77,6 +77,31 @@ npm install -g pnpm@latest-10
 pnpm install && pnpm dev
 ```
 
+## 02-04. 기타 실행 명령
+
+```bash
+# 빌드
+pnpm build
+```
+
+```bash
+# lint 검사
+pnpm lint
+
+# lint 검사 및 자동 수정
+pnpm lint:fix
+```
+
+```bash
+# Typescript 타입 검사
+pnpm type-check
+```
+
+```bash
+# 유닛/통합 테스트 실행
+pnpm test
+```
+
 
 
 <br /><hr /><br />
@@ -122,7 +147,7 @@ TODO:
 ```
 
 
-FIXME: 각 디렉토리 구조 잡은 후, 아래 목록 삭제하
+FIXME: 각 디렉토리 구조 잡은 후, 아래 목록 삭제하기
 - `app/`
   - Next.js 파일 시스템 라우터
 - `app/**/components`
@@ -259,6 +284,12 @@ Next.js 는 JS 빌트인 함수인 `fetch` 를 확장하여 제공하지만, 본
   - [x] `_calculator.ts` 파일 테스트하기
   - [x] Testing Library 및 Ecosystem 설치하기
   - [x] `_SampleButton.tsx` 컴포넌트 만들고 테스트하기
+- eslint 설정
+  - [x] 브랜치명: `config/eslint--stylistic`
+  - [x] stylistic plugin 설치
+  - [x] eslint plugin 설정
+  - [x] rules 설정
+  - [x] type-check 실행 스크립트 추가
 - Tailwind 구성하기
   - [ ] 브랜치명: `config/tailwind-utils`
   - [ ] `cn.ts` 유틸 함수 모듈 만들기
