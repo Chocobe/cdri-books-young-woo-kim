@@ -87,34 +87,71 @@ pnpm install && pnpm dev
 
 ## 03-01. 폴더 구조
 
-TODO:
+TODO: 
+```bash
+.
+├── app
+│   │ # Next.js file system router
+│
+├── common
+│   │ # 공통 구현부
+│   │
+│   ├── apis
+│   │   │ # API 연동 구현부 (Axios 기반)
+│   │
+│   ├── components
+│   │   │ # UI 컴포넌트
+│   │
+│   ├── features
+│   │   │ # Feature 기반 구조 구현부
+│   │
+│   ├── layouts
+│   │   │ # layout 구성 컴포넌트
+│   │
+│   ├── stores
+│   │   │ # UI 스토어 (Zustand)
+│   │
+│   ├── test
+│   │   │ # 테스트 관련 설정부
+│   │
+│   └── utils
+│       │ # 유틸리티 구현부
+│
+└── public
+    │ # 정적 리소스
+```
 
+
+FIXME: 각 디렉토리 구조 잡은 후, 아래 목록 삭제하
 - `app/`
   - Next.js 파일 시스템 라우터
 - `app/**/components`
   - 특정 페이지에 종속된 컴포넌트
-- `apis/`
+- `common/`
+  - 공통 구현부
+- `common/apis/`
   - API Generic type
   - axios instance
   - API 구현부 구조
-- `layouts/`
+- `common/layouts/`
   - 레이아웃 컴포넌트
-- `components/`
+- `common/components/`
   - 공통 컴포넌트
-- `features/[피쳐명]/`
+- `common/features/[피쳐명]/`
   - components
   - keys
   - queries
   - mutations
-- `utils`
+- `common/utils`
   - tailwindcss 유틸 만들기
     - cn: tailwindcss util class 병합 유틸
-- `test`
+- `common/test`
   - vitest setupFile 만들기
   - vitest 설정 테스트는 `test/samples` 에서 해보자
-- `stores`
+- `common/stores`
   - zustand util 만들기 (middleware 통합용 유틸)
   - zustand persist 필요 (localStorage)
+FIXME: //
 
 <br />
 
@@ -217,11 +254,11 @@ Next.js 는 JS 빌트인 함수인 `fetch` 를 확장하여 제공하지만, 본
 
 ### 설정하기
 - 테스트 환경 구성하기
-  - [ ] 브랜치명: `config/vitest`
-  - [ ] Vitest 설치
-  - [ ] `.ts` 파일 테스트하기
-  - [ ] Testing Library 및 Ecosystem 설치하기
-  - [ ] `SampleInput.tsx` 컴포넌트 만들고 테스트하기
+  - [x] 브랜치명: `config/vitest--testing-library`
+  - [x] Vitest 설치
+  - [x] `_calculator.ts` 파일 테스트하기
+  - [x] Testing Library 및 Ecosystem 설치하기
+  - [x] `_SampleButton.tsx` 컴포넌트 만들고 테스트하기
 - Tailwind 구성하기
   - [ ] 브랜치명: `config/tailwind-utils`
   - [ ] `cn.ts` 유틸 함수 모듈 만들기
