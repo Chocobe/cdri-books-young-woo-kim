@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@redux-devtools/extension": "^3.3.0",
+    "axios": "^1.13.5",
     "clsx": "^2.1.1",
     "es-toolkit": "^1.44.0",
     "immer": "^11.1.4",
