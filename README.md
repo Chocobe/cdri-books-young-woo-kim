@@ -259,6 +259,10 @@ Next.js 는 JS 빌트인 함수인 `fetch` 를 확장하여 제공하지만, 본
   - [x] `_calculator.ts` 파일 테스트하기
   - [x] Testing Library 및 Ecosystem 설치하기
   - [x] `_SampleButton.tsx` 컴포넌트 만들고 테스트하기
+- eslint 설정
+  - [ ] stylistic plugin 설치
+  - [ ] eslint plugin 설정
+  - [ ] rules 설정
 - Tailwind 구성하기
   - [ ] 브랜치명: `config/tailwind-utils`
   - [ ] `cn.ts` 유틸 함수 모듈 만들기
