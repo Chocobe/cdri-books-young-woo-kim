@@ -1,4 +1,5 @@
 import cn from '@/common/utils/tailwindcss/cn';
+import Counter from '@/common/features/Counter/Counter';
 
 function HomePage() {
   return (
@@ -9,7 +10,11 @@ function HomePage() {
       // 'cdri-small',
       'cdri-theme-text-subtitle'
     )}>
-      Home Page
+      <h1>
+        Home Page
+      </h1>
+
+      <Counter />
     </div>
   );
 }
