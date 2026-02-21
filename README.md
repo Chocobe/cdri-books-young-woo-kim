@@ -254,11 +254,11 @@ Next.js 는 JS 빌트인 함수인 `fetch` 를 확장하여 제공하지만, 본
 
 ### 설정하기
 - 테스트 환경 구성하기
-  - [ ] 브랜치명: `config/vitest`
-  - [ ] Vitest 설치
-  - [ ] `.ts` 파일 테스트하기
-  - [ ] Testing Library 및 Ecosystem 설치하기
-  - [ ] `SampleInput.tsx` 컴포넌트 만들고 테스트하기
+  - [x] 브랜치명: `config/vitest--testing-library`
+  - [x] Vitest 설치
+  - [x] `_calculator.ts` 파일 테스트하기
+  - [x] Testing Library 및 Ecosystem 설치하기
+  - [x] `_SampleButton.tsx` 컴포넌트 만들고 테스트하기
 - Tailwind 구성하기
   - [ ] 브랜치명: `config/tailwind-utils`
   - [ ] `cn.ts` 유틸 함수 모듈 만들기
