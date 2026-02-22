@@ -376,12 +376,12 @@ zustand middleware 에 대한 구조화 유틸을 작성하여 스토어를 생�
 - [ ] `MainLayoutHeader.tsx`
 
 ### UI 컴포넌트
+- [x] `CDRIInput.tsx`
 - [ ] `CDRIButton.tsx`
-- [ ] `CDRIInput.tsx`
-- [ ] `CDRICombobox.tsx` ***
-- [ ] `CDRIAccordion.tsx` **
 - [ ] `CDRISelect.tsx` **
+- [ ] `CDRICombobox.tsx` ***
 - [ ] `CDRIPopup.tsx` *
+- [ ] `CDRIAccordion.tsx` **
 - [ ] `CDRIInfinityLoader.tsx`
 - [ ] `CDRINoData.tsx`
 
