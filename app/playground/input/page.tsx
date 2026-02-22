@@ -4,9 +4,9 @@ import PlaygroundTemplate from '../components/PlaygroundTemplate';
 import SearchIcon from '@/common/assets/svgIcons/SearchIcon';
 import CDRIInput from '@/common/components/CDRIInput/CDRIInput';
 
-function PlaygroundInput() {
+function PlaygroundInputPage() {
   return (
-    <PlaygroundTemplate>
+    <PlaygroundTemplate title="CDRIInput">
       <CDRIInput
         variant="underline"
         size="1"
@@ -40,4 +40,4 @@ function PlaygroundInput() {
   );
 }
 
-export default PlaygroundInput;
+export default PlaygroundInputPage;
