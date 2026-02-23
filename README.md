@@ -269,6 +269,17 @@ UI 컴포넌트의 다양한 variant 를 구현할 때, 각 variant 에 대한 c
 `cva` 는 문자열 합치기 정도의 기능만 제공하므로, `tailwind-merge` 와 `clsx` 를 응용한 `cn()` 유틸 함수와 연동하여 사용하였습니다.
 - `common/utils/cva/cva/ts`
 
+<br />
+
+## 04-07. radix-ui
+
+Headless 컴포넌트 라이브러리인 `radix-ui` 를 사용하였습니다.
+
+`radix-ui` 를 활용한 UI 컴포넌트는 다음과 같습니다.
+
+- `CDRISelect`
+- `CDRICombobox`
+
 
 
 <br /><hr /><br />
@@ -276,13 +287,6 @@ UI 컴포넌트의 다양한 variant 를 구현할 때, 각 variant 에 대한 c
 
 
 # 05. 강조 하고 싶은 기능
-
-## 05-01. UI 컴포넌트 라이브러리 미사용
-
-`Shadcn UI` 와 같은 컴포넌트 라이브러리는 사용하지 않고, 직접 구현하였습니다.
-- 첫번째 평가 기준: `UI 구현력 및 디자인 완성도 (재사용 가능한 컴포넌트 설계)`
-
-<br />
 
 ## 05-01. Git branch 접두사
 
