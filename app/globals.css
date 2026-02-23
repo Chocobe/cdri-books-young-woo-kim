@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+/*
+--- --- --- --- --- --- --- ---
+
+CSS normalize
+
+--- --- --- --- --- --- --- ---
+*/
 @layer base {
   * {
     margin: 0;
@@ -37,6 +44,9 @@
 
 @theme {
   --color-cdri-primary: #4880EE;
+  --color-cdri-primary-2: #353C49;
+  --color-cdri-secondary: #6D7582;
+  --color-cdri-subtitle: #8D94A0;
   --color-cdri-red: #E84118;
   --color-cdri-gray: #DADADA;
   --color-cdri-light-gray: #F2F4F6;
@@ -47,7 +57,7 @@
 /*
 --- --- --- --- --- --- --- ---
 
-utility: title-*
+typography
 
 --- --- --- --- --- --- --- ---
 */
@@ -73,13 +83,6 @@ utility: title-*
   letter-spacing: 0%;
 }
 
-/*
---- --- --- --- --- --- --- ---
-
-utility: body-*
-
---- --- --- --- --- --- --- ---
-*/
 @utility cdri-body-1 {
   font-weight: 500;
   font-size: 20px;
@@ -99,13 +102,6 @@ utility: body-*
   letter-spacing: 0%;
 }
 
-/*
---- --- --- --- --- --- --- ---
-
-utility: caption
-
---- --- --- --- --- --- --- ---
-*/
 @utility cdri-caption {
   font-weight: 500;
   font-size: 16px;
@@ -113,34 +109,9 @@ utility: caption
   letter-spacing: 0%;
 }
 
-/*
---- --- --- --- --- --- --- ---
-
-utility: small
-
---- --- --- --- --- --- --- ---
-*/
 @utility cdri-small {
   font-weight: 500;
   font-size: 10px;
   line-height: 10px;
   letter-spacing: 0%;
-}
-
-
-/*
---- --- --- --- --- --- --- ---
-
-utility: theme-text
-
---- --- --- --- --- --- --- ---
-*/
-@utility cdri-theme-text-primary {
-  color: #353C49;
-}
-@utility cdri-theme-text-secondary {
-  color: #6D7582;
-}
-@utility cdri-theme-text-subtitle {
-  color: #8D94A0;
 }

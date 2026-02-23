@@ -54,7 +54,7 @@ type TUnionProps =
 const BUTTON_VARIANTS = {
   variants: {
     surface: '',
-    outline: 'border border-[#8D94A0]',
+    outline: 'border border-cdri-subtitle',
   },
   size: {
     1: 'px-2.5 h-[35px] text-sm',
@@ -63,10 +63,10 @@ const BUTTON_VARIANTS = {
   bgColor: {
     surface: {
       primary: 'text-cdri-white bg-cdri-primary',
-      'light-gray': 'cdri-theme-text-secondary bg-cdri-light-gray',
+      'light-gray': 'text-cdri-secondary bg-cdri-light-gray',
     },
     outline: {
-      primary: 'text-[#8D94A0]',
+      primary: 'text-cdri-subtitle',
     },
   },
 } as const;

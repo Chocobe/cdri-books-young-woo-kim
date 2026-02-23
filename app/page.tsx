@@ -5,7 +5,7 @@ function HomePage() {
   return (
     <div className={cn(
       'cdri-title-2',
-      'cdri-theme-text-subtitle'
+      'text-cdri-subtitle'
     )}>
       <h1>
         Home Page
