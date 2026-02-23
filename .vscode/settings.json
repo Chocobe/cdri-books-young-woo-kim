@@ -1,0 +1,4 @@
+{
+  // cva 에서 tailwindcss 자동 완성 설정
+  "tailwindCSS.classFunctions": ["cva", "cx"]
+}

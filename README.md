@@ -246,6 +246,48 @@ Javascript 유틸리티 라이브러리 입니다.
 
 lodash 대비 97% 작은 번들 사이즈와 Tree shaking, 빠른 속도를 제공합니다.
 
+<br />
+
+## 04-06. class-variance-authority (cva)
+
+UI 컴포넌트의 다양한 variant 를 구현할 때, 각 variant 에 대한 className 을 정의하기 유용한 라이브러리입니다.
+
+`cva` 없이 UI 컴포넌트를 구현한 결과, 결국 variants 에 대한 type, interface, util function 을 만들어야만 구조화가 가능하다고 판단되었습니다.
+
+이는 아래의 UI 컴포넌트를 구현하며 느끼게 되었습니다.
+
+- `CDRIInput` : CSS 를 사용한 variants 구현
+  - 각 variants 에 대한 CSS selector 가독성 문제
+  - 조건부 variants 경우의 수 만큼 스타일 작성 필요
+  - `data-*` attribute 사용이 많아지므로 유지보수 측면에서 `.tsx` 와 `.css` 의 선택자 불일치 가능성이 발생
+
+- `CDRIButton` : plain object 를 사용한 variants 구현
+  - type, interface, util function 이 없어서 유지보수가 불가능 수준
+  - variants 구현 시, Tailwindcss 자동완성 미지원
+  - variants 조합별 병합 우선순위가 민감함
+
+`cva` 는 문자열 합치기 정도의 기능만 제공하므로, `tailwind-merge` 와 `clsx` 를 응용한 `cn()` 유틸 함수와 연동하여 사용하였습니다.
+- `common/utils/cva/cva/ts`
+
+<br />
+
+## 04-07. radix-ui
+
+Headless 컴포넌트 라이브러리인 `radix-ui` 를 사용하였습니다.
+
+`radix-ui` 를 활용한 UI 컴포넌트는 다음과 같습니다.
+
+- `CDRISelect`
+- `CDRICombobox`
+
+<br />
+
+## 04-08. use-context-selector
+
+React ContextAPI 의 렌더링 최적화를 위해 사용하였습니다.
+
+context state 중 하나가 변경되면 다른 모든 state 도 리렌더링 트리거가 발생되는 ContextAPI 리렌더링 현상을 해결합니다.
+
 
 
 <br /><hr /><br />
@@ -253,13 +295,6 @@ lodash 대비 97% 작은 번들 사이즈와 Tree shaking, 빠른 속도를 제�
 
 
 # 05. 강조 하고 싶은 기능
-
-## 05-01. UI 컴포넌트 라이브러리 미사용
-
-`Shadcn UI` 와 같은 컴포넌트 라이브러리는 사용하지 않고, 직접 구현하였습니다.
-- 첫번째 평가 기준: `UI 구현력 및 디자인 완성도 (재사용 가능한 컴포넌트 설계)`
-
-<br />
 
 ## 05-01. Git branch 접두사
 
@@ -378,7 +413,7 @@ zustand middleware 에 대한 구조화 유틸을 작성하여 스토어를 생�
 ### UI 컴포넌트
 - [x] `CDRIInput.tsx`
 - [x] `CDRIButton.tsx`
-- [ ] `CDRISelect.tsx` **
+- [x] `CDRISelect.tsx` **
 - [ ] `CDRICombobox.tsx` ***
 - [ ] `CDRIPopup.tsx` *
 - [ ] `CDRIAccordion.tsx` **
