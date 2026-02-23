@@ -246,6 +246,29 @@ Javascript 유틸리티 라이브러리 입니다.
 
 lodash 대비 97% 작은 번들 사이즈와 Tree shaking, 빠른 속도를 제공합니다.
 
+<br />
+
+## 04-06. class-variance-authority (cva)
+
+UI 컴포넌트의 다양한 variant 를 구현할 때, 각 variant 에 대한 className 을 정의하기 유용한 라이브러리입니다.
+
+`cva` 없이 UI 컴포넌트를 구현한 결과, 결국 variants 에 대한 type, interface, util function 을 만들어야만 구조화가 가능하다고 판단되었습니다.
+
+이는 아래의 UI 컴포넌트를 구현하며 느끼게 되었습니다.
+
+- `CDRIInput` : CSS 를 사용한 variants 구현
+  - 각 variants 에 대한 CSS selector 가독성 문제
+  - 조건부 variants 경우의 수 만큼 스타일 작성 필요
+  - `data-*` attribute 사용이 많아지므로 유지보수 측면에서 `.tsx` 와 `.css` 의 선택자 불일치 가능성이 발생
+
+- `CDRIButton` : plain object 를 사용한 variants 구현
+  - type, interface, util function 이 없어서 유지보수가 불가능 수준
+  - variants 구현 시, Tailwindcss 자동완성 미지원
+  - variants 조합별 병합 우선순위가 민감함
+
+`cva` 는 문자열 합치기 정도의 기능만 제공하므로, `tailwind-merge` 와 `clsx` 를 응용한 `cn()` 유틸 함수와 연동하여 사용하였습니다.
+- `common/utils/cva/cva/ts`
+
 
 
 <br /><hr /><br />
