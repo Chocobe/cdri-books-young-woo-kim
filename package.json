@@ -24,7 +24,9 @@
     "radix-ui": "^1.4.3",
     "react": "19.2.3",
     "react-dom": "19.2.3",
+    "scheduler": "^0.27.0",
     "tailwind-merge": "^3.5.0",
+    "use-context-selector": "^2.0.0",
     "zustand": "^5.0.11"
   },
   "devDependencies": {

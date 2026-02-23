@@ -280,6 +280,14 @@ Headless 컴포넌트 라이브러리인 `radix-ui` 를 사용하였습니다.
 - `CDRISelect`
 - `CDRICombobox`
 
+<br />
+
+## 04-08. use-context-selector
+
+React ContextAPI 의 렌더링 최적화를 위해 사용하였습니다.
+
+context state 중 하나가 변경되면 다른 모든 state 도 리렌더링 트리거가 발생되는 ContextAPI 리렌더링 현상을 해결합니다.
+
 
 
 <br /><hr /><br />
