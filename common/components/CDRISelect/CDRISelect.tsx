@@ -202,14 +202,14 @@ function Content(props: ComponentProps<typeof SelectPrimitive.Content>) {
 }
 /**
  * @example
- *  <cdriselect>
- *    <cdriselect.trigger />
- *    <cdriselect.content>
- *      <cdriselect.item value="value-1">text-1</cdriselect.item>
- *      <cdriselect.item value="value-2">text-2</cdriselect.item>
- *      <cdriselect.item value="value-3">text-3</cdriselect.item>
- *    </cdriselect.content>
- *  </cdriselect>
+ *  <CDRISelect>
+ *    <CDRISelect.Trigger />
+ *    <CDRISelect.Content>
+ *      <CDRISelect.Item value="value-1">text-1</CDRISelect.Item>
+ *      <CDRISelect.Item value="value-2">text-2</CDRISelect.Item>
+ *      <CDRISelect.Item value="value-3">text-3</CDRISelect.Item>
+ *    </CDRISelect.Content>
+ *  </CDRISelect>
  */
 CDRISelect.Content = Content;
 
@@ -260,14 +260,14 @@ function Item(props: IItemProps) {
 }
 /**
  * @example
- *  <cdriselect>
- *    <cdriselect.trigger />
- *    <cdriselect.content>
- *      <cdriselect.item value="value-1">text-1</cdriselect.item>
- *      <cdriselect.item value="value-2">text-2</cdriselect.item>
- *      <cdriselect.item value="value-3">text-3</cdriselect.item>
- *    </cdriselect.content>
- *  </cdriselect>
+ *  <CDRISelect>
+ *    <CDRISelect.Trigger />
+ *    <CDRISelect.Content>
+ *      <CDRISelect.Item value="value-1">text-1</CDRISelect.Item>
+ *      <CDRISelect.Item value="value-2">text-2</CDRISelect.Item>
+ *      <CDRISelect.Item value="value-3">text-3</CDRISelect.Item>
+ *    </CDRISelect.Content>
+ *  </CDRISelect>
  */
 CDRISelect.Item = Item;
 
