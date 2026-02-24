@@ -413,8 +413,8 @@ zustand middleware 에 대한 구조화 유틸을 작성하여 스토어를 생�
 ### UI 컴포넌트
 - [x] `CDRIInput.tsx`
 - [x] `CDRIButton.tsx`
-- [x] `CDRISelect.tsx` **
-- [ ] `CDRICombobox.tsx` ***
+- [x] `CDRISelect.tsx`
+- [x] `CDRICombobox.tsx`
 - [ ] `CDRIPopup.tsx` *
 - [ ] `CDRIAccordion.tsx` **
 - [ ] `CDRIInfinityLoader.tsx`
