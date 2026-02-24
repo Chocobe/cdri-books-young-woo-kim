@@ -1,16 +1,11 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
-import './globals.css';
+import { Noto_Sans_KR } from 'next/font/google';
 import QueryClientProviderImpl from '@/common/utils/react-query/QueryClientProviderImpl';
+import './globals.css';
+import MainLayout from '@/common/layouts/MainLayout/MainLayout';
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-});
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
+const notoSansKR = Noto_Sans_KR({
+  variable: '--font-noto-sans-kr',
 });
 
 export const metadata: Metadata = {
@@ -26,11 +21,13 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${notoSansKR.variable}`}
       >
         <div id="root">
           <QueryClientProviderImpl>
-            {children}
+            <MainLayout>
+              {children}
+            </MainLayout>
           </QueryClientProviderImpl>
         </div>
       </body>

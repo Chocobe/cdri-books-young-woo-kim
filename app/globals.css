@@ -16,8 +16,8 @@ CSS normalize
 
   html,
   body {
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     overflow: hidden !important;
   }
 
@@ -53,6 +53,10 @@ CSS normalize
   --color-cdri-light-gray-2: #D2D6DA;
   --color-cdri-white: #FFFFFF;
   --color-cdri-black: #222222;
+}
+
+@theme {
+  --default-font-family: Noto Sane KR sans-serif;
 }
 
 /*
