@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Noto_Sans_KR } from 'next/font/google';
 import QueryClientProviderImpl from '@/common/utils/react-query/QueryClientProviderImpl';
 import './globals.css';
+import MainLayout from '@/common/layouts/MainLayout/MainLayout';
 
 const notoSansKR = Noto_Sans_KR({
   variable: '--font-noto-sans-kr',
@@ -24,7 +25,9 @@ export default function RootLayout({
       >
         <div id="root">
           <QueryClientProviderImpl>
-            {children}
+            <MainLayout>
+              {children}
+            </MainLayout>
           </QueryClientProviderImpl>
         </div>
       </body>
