@@ -10,7 +10,7 @@
 
   &[data-variant="surface"] {
     background-color: var(--color-cdri-light-gray);
-    border-radius: 100px;
+    border-radius: 25px;
   }
 
   /* 

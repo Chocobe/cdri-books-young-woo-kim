@@ -10,7 +10,7 @@ import styles from './CDRIInput.module.css';
 
 interface ICDRIInputProps extends Omit<
   ComponentPropsWithRef<'input'>,
-  'size' | 'className' | 'style'
+  'size'
 > {
   /**
    * 컴포넌트 전반적인 스타일 설정
@@ -54,12 +54,18 @@ function CDRIInput(props: ICDRIInputProps) {
     size = '1',
     children,
     ref,
+    className,
+    style,
     ...inputProps
   } = props;
 
   return (
     <div
-      className={styles.CDRIInput}
+      className={cn(
+        styles.CDRIInput,
+        className
+      )}
+      style={style}
       data-variant={variant}
       data-size={size}
     >
