@@ -41,7 +41,7 @@ export const BOOKS_API_TARGET_MAPPER = {
  * - `PUBLISHER`: 출판사 검색
  * - `PERSON`: 저자 검색
  */
-type T_BOOKS_API_TARGET = typeof BOOKS_API_TARGET_MAPPER[keyof typeof BOOKS_API_TARGET_MAPPER];
+export type T_BOOKS_API_TARGET = typeof BOOKS_API_TARGET_MAPPER[keyof typeof BOOKS_API_TARGET_MAPPER];
 
 // --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 //
