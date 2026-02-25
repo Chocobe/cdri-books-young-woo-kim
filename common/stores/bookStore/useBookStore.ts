@@ -1,9 +1,13 @@
+/**
+ * `도서 검색`, `내가 찜한 책` 에 대하여 Slice pattern 적용
+ */
+
 import { 
   createWithPersist,
   StateCreatorWithPersist,
 } from '@/common/utils/zustand/zustand-utils';
 
-const BOOK_SEARCH_HISTORY_LENGTH = 8;
+const BOOK_SEARCH_HISTORY_MEMORY_LENGTH = 8;
 
 // --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 //
@@ -32,16 +36,13 @@ const createBookSearchSlice: StateCreatorWithPersist<
     searchHistories: [],
     addSearchHistory: searchHistory => {
       set(s => {
-        const newSearchHistories = Array.
-          from(new Set([
+        s.bookSearch.searchHistories = Array
+          .from(new Set([
             searchHistory, 
             ...s.bookSearch.searchHistories,
           ]))
-          .slice(0, BOOK_SEARCH_HISTORY_LENGTH);
-
-        console.log('newSearchHistories: ', newSearchHistories);
-        s.bookSearch.searchHistories = newSearchHistories;
-      }, undefined, 'addSearchHistories');
+          .slice(0, BOOK_SEARCH_HISTORY_MEMORY_LENGTH);
+      }, undefined, 'addSearchHistory');
     },
   },
 });

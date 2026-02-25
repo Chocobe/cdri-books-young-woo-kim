@@ -1,5 +1,6 @@
 import cn from '@/common/utils/tailwindcss/cn';
 import BookSearchBar from '@/common/features/BookSearchBar/BookSearchBar';
+import SearchCountIndicator from '@/common/components/composite/SearchCountIndicator/SearchCountIndicator';
 
 function HomePage() {
   return (
@@ -7,7 +8,17 @@ function HomePage() {
       'mx-auto py-20',
       'w-240'
     )}>
-      <BookSearchBar />
+      <div className={cn(
+        // 
+      )}>
+        <BookSearchBar />
+        <SearchCountIndicator
+          className="mt-6"
+          label="도서 검색 결과"
+          // TODO: query 연동하기
+          count={123}
+        />
+      </div>
     </div>
   );
 }

@@ -306,6 +306,7 @@ context state 중 하나가 변경되면 다른 모든 state 도 리렌더링 �
 
 - `config/*` : 설정 관련 작업
 - `ui/*` : 공통 UI 컴포넌트 구현 작업
+- `composite/*` : 합성 컴포넌트 구현 작업
 - `layout/*` : 레이아웃 작업
 - `feature/*` : 기능 구현 작업
 
