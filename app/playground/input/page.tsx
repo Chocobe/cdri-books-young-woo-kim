@@ -2,14 +2,19 @@
 
 import PlaygroundTemplate from '../components/PlaygroundTemplate';
 import SearchIcon from '@/common/assets/svgIcons/SearchIcon';
-import CDRIInput from '@/common/components/CDRIInput/CDRIInput';
+import CDRIInput from '@/common/components/ui/CDRIInput/CDRIInput';
+import { useState } from 'react';
 
 function PlaygroundInputPage() {
+  const [value, setValue] = useState('');
+
   return (
     <PlaygroundTemplate title="CDRIInput">
       <CDRIInput
         variant="underline"
         size="1"
+        value={value}
+        onChange={e => setValue(e.target.value)}
       >
       </CDRIInput>
 

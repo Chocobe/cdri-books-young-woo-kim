@@ -1,6 +1,6 @@
 'use client';
 
-import CDRIButton from '@/common/components/CDRIButton/CDRIButton';
+import CDRIButton from '@/common/components/ui/CDRIButton/CDRIButton';
 import PlaygroundTemplate from '../components/PlaygroundTemplate';
 import ChevronDownIcon from '@/common/assets/svgIcons/ChevronDownIcon';
 import { useState } from 'react';

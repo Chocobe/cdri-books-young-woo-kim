@@ -1,6 +1,5 @@
 'use client';
 
-import cn from '@/common/utils/tailwindcss/cn';
 /**
 <CDRICombobox>
   <CDRICombobox.Trigger />
@@ -26,6 +25,8 @@ import {
   RefObject,
   PropsWithChildren,
   KeyboardEvent,
+  ChangeEvent,
+  memo,
 } from 'react';
 import { 
   createContext, 
@@ -34,9 +35,13 @@ import {
 import CDRIInput from '../CDRIInput/CDRIInput';
 import SearchIcon from '@/common/assets/svgIcons/SearchIcon';
 import CloseIcon from '@/common/assets/svgIcons/CloseIcon';
+import cn from '@/common/utils/tailwindcss/cn';
+
+const MemoedCDRIInput = memo(CDRIInput);
 
 const DEFAULT_PLACEHOLDER = '텍스트를 입력하세요.';
 const DEFAULT_OPEN = false;
+const DEFAULT_EMPTY_ITEMS_MESSAGE = '검색기록이 없습니다.';
 
 // --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 //
@@ -45,6 +50,21 @@ const DEFAULT_OPEN = false;
 // --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 type TInputRef = HTMLInputElement | null;
 
+export interface IOnKeyDownContext {
+  onValueChange: IInternalContext['onValueChange'];
+  onOpenChange: IInternalContext['onOpenChange'];
+}
+
+export interface IOnKeyDownProp {
+  (
+    e: KeyboardEvent<HTMLInputElement>,
+    ctx: {
+      onValueChange: IInternalContext['onValueChange'];
+      onOpenChange: IInternalContext['onOpenChange'];
+    }
+  ): void;
+}
+
 interface IInternalContext {
   $inputRef: RefObject<TInputRef>;
   placeholder?: string;
@@ -52,13 +72,7 @@ interface IInternalContext {
   onValueChange: (value: string) => void;
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  onKeyDown?: (
-    e: KeyboardEvent<HTMLInputElement>,
-    ctx: {
-      onValueChange: IInternalContext['onValueChange'];
-      onOpenChange: IInternalContext['onOpenChange'];
-    }
-  ) => void;
+  onKeyDown?: IOnKeyDownProp;
 }
 
 const InternalContext = createContext<IInternalContext | null>(null);
@@ -195,28 +209,45 @@ function Trigger() {
   const onOpenChange = useInternalContext(state => state.onOpenChange);
   const onKeyDown = useInternalContext(state => state.onKeyDown);
 
+  const _onValueChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    onValueChange(e.target.value);
+  }, [onValueChange]);
+
+  const _onKeyDown = useCallback((e: KeyboardEvent<HTMLInputElement>) => {
+    onKeyDown?.(e, {
+      onValueChange,
+      onOpenChange,
+    });
+  }, [
+    onKeyDown,
+    onValueChange,
+    onOpenChange,
+  ]);
+
+  const memoedSlot = useMemo(() => (
+    <CDRIInput.Slot>
+      <SearchIcon />
+    </CDRIInput.Slot>
+  ), []);
+
   return (
     <Popover.Trigger asChild className="group">
       <div>
-        <CDRIInput
+        <MemoedCDRIInput
           ref={$inputRef}
           className={cn(
+            'cdri-caption',
             'group-data-[state="open"]:rounded-b-none!'
           )}
           placeholder={placeholder}
           value={value ?? ''}
-          onChange={e => onValueChange(e.target.value)}
+          onChange={_onValueChange}
           variant="surface"
           size="2"
-          onKeyDown={e => onKeyDown?.(e, {
-            onValueChange,
-            onOpenChange,
-          })}
+          onKeyDown={_onKeyDown}
         >
-          <CDRIInput.Slot>
-            <SearchIcon />
-          </CDRIInput.Slot>
-        </CDRIInput>
+          {memoedSlot}
+        </MemoedCDRIInput>
       </div>
     </Popover.Trigger>
   );
@@ -260,7 +291,11 @@ function Content(props: IContentProps) {
           $inputRef.current?.blur();
         }}
       >
-        {children}
+        {children || (
+          <Item disabled>
+            {DEFAULT_EMPTY_ITEMS_MESSAGE}
+          </Item>
+        )}
       </Popover.Content>
     </Popover.Portal>
   );
@@ -283,31 +318,31 @@ CDRICombobox.Content = Content;
 // Item
 //
 // --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
-interface IItemProps extends PropsWithChildren {
-  value: string;
+interface IItemProps {
+  disabled?: boolean;
+  children: string;
 }
 
 function Item(props: IItemProps) {
   const {
-    value,
+    disabled = false,
     children,
   } = props;
 
   const $inputRef = useInternalContext(state => state.$inputRef);
   const onValueChange = useInternalContext(state => state.onValueChange);
-  const onOpenChange = useInternalContext(state => state.onOpenChange);
 
   const isSelected = useInternalContext(state => {
-    return state.value === value;
+    return state.value === children;
   });
 
   const onClickItem = () => {
-    if (isSelected) {
+    if (isSelected || disabled) {
       return;
     }
 
-    onValueChange(value);
-    onOpenChange(false);
+    onValueChange(children);
+    $inputRef.current?.focus();
   };
 
   const onClickCancel = () => {
@@ -321,14 +356,20 @@ function Item(props: IItemProps) {
         'pl-10.25 pr-6.25',
         'h-10',
         'flex justify-between items-center gap-10',
-        'hover:bg-cdri-white hover:text-cdri-primary-2',
+        'cdri-caption text-cdri-subtitle',
+        'rounded-[20px]',
+        'cursor-default',
+        !disabled && 'hover:bg-cdri-white hover:text-cdri-primary-2',
         isSelected && 'bg-cdri-white text-cdri-primary-2'
       )}
       onClick={onClickItem}
     >
       {children}
       {isSelected && (
-        <CloseIcon onClick={onClickCancel} />
+        <CloseIcon
+          className="cursor-pointer"
+          onClick={onClickCancel}
+        />
       )}
     </div>
   );
@@ -338,9 +379,9 @@ function Item(props: IItemProps) {
  *  <CDRICombobox>
  *    <CDRICombobox.Trigger />
  *    <CDRICombobox.Content>
- *      <CDRICombobox.Item value="value-1">Item 1</CDRICombobox.Item>
- *      <CDRICombobox.Item value="value-2">Item 2</CDRICombobox.Item>
- *      <CDRICombobox.Item value="value-3">Item 3</CDRICombobox.Item>
+ *      <CDRICombobox.Item>Item 1</CDRICombobox.Item>
+ *      <CDRICombobox.Item>Item 2</CDRICombobox.Item>
+ *      <CDRICombobox.Item>Item 3</CDRICombobox.Item>
  *    </CDRICombobox.Content>
  *  </CDRICombobox>
  */

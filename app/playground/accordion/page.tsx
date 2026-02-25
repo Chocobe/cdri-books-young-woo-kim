@@ -2,7 +2,7 @@
 
 import CDRIAccordion, {
   ICDRIAccordionCustomItemImplProps,
-} from '@/common/components/CDRIAccordion/CDRIAccordion';
+} from '@/common/components/ui/CDRIAccordion/CDRIAccordion';
 import PlaygroundTemplate from '../components/PlaygroundTemplate';
 import cn from '@/common/utils/tailwindcss/cn';
 

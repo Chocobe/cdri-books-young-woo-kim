@@ -150,7 +150,7 @@ TODO:
 FIXME: 각 디렉토리 구조 잡은 후, 아래 목록 삭제하기
 - `app/`
   - Next.js 파일 시스템 라우터
-- `app/**/components`
+- `app/**/components/ui`
   - 특정 페이지에 종속된 컴포넌트
 - `common/`
   - 공통 구현부
@@ -160,8 +160,10 @@ FIXME: 각 디렉토리 구조 잡은 후, 아래 목록 삭제하기
   - API 구현부 구조
 - `common/layouts/`
   - 레이아웃 컴포넌트
-- `common/components/`
-  - 공통 컴포넌트
+- `common/components/ui`
+  - 원시 컴포넌트
+- `common/components/composite`
+  - 합성 컴포넌트
 - `common/features/[피쳐명]/`
   - components
   - keys
@@ -422,7 +424,8 @@ zustand middleware 에 대한 구조화 유틸을 작성하여 스토어를 생�
 - [ ] `CDRINoData.tsx`
 
 ### feature 컴포넌트
-- [ ] `BookSearch.tsx`
+- [ ] `BookSearchBar.tsx`
+  - [x] `primitive/SearchBar.tsx`
 - [ ] `SearchCountIndicator.tsx`
 - [ ] `BookList.tsx`
 - [ ] `BookImage.tsx`

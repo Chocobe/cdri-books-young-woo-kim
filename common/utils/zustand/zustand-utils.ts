@@ -61,7 +61,8 @@ export const createWithPersist = <TStore>() => (
         }
       ),
       {
-        skipHydration: true,
+        // NOTE: SSR 사용처가 생기면 `false` 로 변경하기
+        // skipHydration: true,
         storage: createJSONStorage<TStore>(() => window.localStorage),
         merge: (persistedState = {}, currentState) => {
           return merge(

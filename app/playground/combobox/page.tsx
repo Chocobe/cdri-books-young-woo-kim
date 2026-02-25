@@ -1,16 +1,16 @@
 'use client';
 
-import CDRICombobox from '@/common/components/CDRICombobox/CDRICombobox';
+import CDRICombobox from '@/common/components/ui/CDRICombobox/CDRICombobox';
 import PlaygroundTemplate from '../components/PlaygroundTemplate';
 import {
   useRef,
   // useEffect,
-  // useState,
+  useState,
 } from 'react';
 
 function PlaygroundComboboxPage() {
   const $inputRef = useRef<HTMLInputElement>(null);
-  // const [value, setValue] = useState('initial value');
+  const [value, setValue] = useState('initial value');
 
   // useEffect(() => {
   //   console.log('controlled - value: ', value);
@@ -22,8 +22,8 @@ function PlaygroundComboboxPage() {
       <div>
         <CDRICombobox
           ref={$inputRef}
-          // value={value}
-          // onValueChange={setValue}
+          value={value}
+          onValueChange={setValue}
           onKeyDown={(e, ctx) => {
             if (e.key.toLowerCase() === 'enter') {
               console.log('Enter!');
@@ -34,11 +34,11 @@ function PlaygroundComboboxPage() {
         >
           <CDRICombobox.Trigger />
           <CDRICombobox.Content>
-            <CDRICombobox.Item value="value-1">Item 1</CDRICombobox.Item>
-            <CDRICombobox.Item value="value-2">Item 2</CDRICombobox.Item>
-            <CDRICombobox.Item value="value-3">Item 3</CDRICombobox.Item>
-            <CDRICombobox.Item value="value-4">Item 4</CDRICombobox.Item>
-            <CDRICombobox.Item value="value-5">Item 5</CDRICombobox.Item>
+            <CDRICombobox.Item>Item 1</CDRICombobox.Item>
+            <CDRICombobox.Item>Item 2</CDRICombobox.Item>
+            <CDRICombobox.Item>Item 3</CDRICombobox.Item>
+            <CDRICombobox.Item>Item 4</CDRICombobox.Item>
+            <CDRICombobox.Item>Item 5</CDRICombobox.Item>
           </CDRICombobox.Content>
         </CDRICombobox>
       </div>
