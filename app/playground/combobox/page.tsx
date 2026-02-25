@@ -1,6 +1,6 @@
 'use client';
 
-import CDRICombobox from '@/common/components/CDRICombobox/CDRICombobox';
+import CDRICombobox from '@/common/components/ui/CDRICombobox/CDRICombobox';
 import PlaygroundTemplate from '../components/PlaygroundTemplate';
 import {
   useRef,

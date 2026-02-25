@@ -1,6 +1,6 @@
 'use client';
 
-import CDRISelect from '@/common/components/CDRISelect/CDRISelect';
+import CDRISelect from '@/common/components/ui/CDRISelect/CDRISelect';
 import PlaygroundTemplate from '../components/PlaygroundTemplate';
 import { useEffect, useState } from 'react';
 

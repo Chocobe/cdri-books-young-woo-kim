@@ -2,7 +2,7 @@
 
 import PlaygroundTemplate from '../components/PlaygroundTemplate';
 import SearchIcon from '@/common/assets/svgIcons/SearchIcon';
-import CDRIInput from '@/common/components/CDRIInput/CDRIInput';
+import CDRIInput from '@/common/components/ui/CDRIInput/CDRIInput';
 
 function PlaygroundInputPage() {
   return (

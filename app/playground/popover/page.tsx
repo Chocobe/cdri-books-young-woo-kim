@@ -1,8 +1,8 @@
 'use client';
 
-import CDRIPopover from '@/common/components/CDRIPopover/CDRIPopover';
+import CDRIPopover from '@/common/components/ui/CDRIPopover/CDRIPopover';
 import PlaygroundTemplate from '../components/PlaygroundTemplate';
-import CDRIButton from '@/common/components/CDRIButton/CDRIButton';
+import CDRIButton from '@/common/components/ui/CDRIButton/CDRIButton';
 
 function PlaygroundPopoverPage() {
   return (
