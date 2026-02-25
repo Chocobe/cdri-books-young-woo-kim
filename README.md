@@ -422,7 +422,7 @@ zustand middleware 에 대한 구조화 유틸을 작성하여 스토어를 생�
 - [x] `CDRIPopup.tsx` 
 - [x] `CDRIAccordion.tsx`
 - [ ] `CDRIInfinityLoader.tsx`
-- [ ] `CDRINoData.tsx`
+- [x] `CDRINoDataIndicator.tsx`
 
 ### feature 컴포넌트
 - [ ] `BookSearchBar.tsx`
