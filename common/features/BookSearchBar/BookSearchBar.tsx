@@ -12,40 +12,75 @@ import CDRISelect from '@/common/components/ui/CDRISelect/CDRISelect';
 import CDRIInput from '@/common/components/ui/CDRIInput/CDRIInput';
 import CDRIButton from '@/common/components/ui/CDRIButton/CDRIButton';
 import useBookStore from '@/common/stores/bookStore/useBookStore';
+import { 
+  BOOKS_API_TARGET_MAPPER, 
+  T_BOOKS_API_TARGET,
+} from '@/common/apis/bookApis/bookApis.type';
 
-const searchTypeItems = ['저자명', '출판사'];
+const searchTypeItems = [
+  {
+    label: '저자명',
+    value: BOOKS_API_TARGET_MAPPER.PERSON,
+  },
+  {
+    label: '출판사',
+    value: BOOKS_API_TARGET_MAPPER.PUBLISHER,
+  },
+];
 
 function BookSearchBar() {
   const $detailSearchInputRef = useRef<HTMLInputElement | null>(null);
   const $closeButtonRef = useRef<HTMLButtonElement | null>(null);
 
+  // 검색 값
   const [searchValue, setSearchValue] = useState('');
-  const [searchType, setSearchType] = useState('');
+
+  // 상세검색 값
   const [detailSearchValue, setDetailSearchValue] = useState('');
+  const [detailSearchType, setDetailSearchType] = useState('');
+
+  const setQueryParamsForRetrieveBooksApi = useBookStore(state => {
+    return state.bookSearch.setQueryParamsForRetrieveBooksApi;
+  });
 
   const searchHistories = useBookStore(state => state.bookSearch.searchHistories);
   const addSearchHistory = useBookStore(state => state.bookSearch.addSearchHistory);
 
   const onSubmit = useCallback(() => {
-    // TODO: API 연동하기
-    console.group('BookSearchBar - onSubmit()');
-    console.log('searchValue: ', searchValue);
-    console.groupEnd();
+    if (!searchValue.trim()) {
+      return;
+    }
 
+    setQueryParamsForRetrieveBooksApi(queryParams => ({
+      ...queryParams,
+      query: searchValue,
+      target: BOOKS_API_TARGET_MAPPER.TITLE,
+    }));
     addSearchHistory(searchValue);
-  }, [searchValue, addSearchHistory]);
+    setDetailSearchValue('');
+    setDetailSearchType('');
+  }, [
+    searchValue,
+    addSearchHistory,
+    setQueryParamsForRetrieveBooksApi,
+  ]);
 
   const onSubmitDetail = useCallback(() => {
-    // TODO: API 연동하기
-    console.group('BookSearchBar - onSubmitDetail()');
-    console.log('searchType: ', searchType);
-    console.log('detailSearchValue: ', detailSearchValue);
-    console.groupEnd();
+    if (!detailSearchValue.trim() || !detailSearchType) {
+      return;
+    }
 
+    setQueryParamsForRetrieveBooksApi(queryParams => ({
+      ...queryParams,
+      target: detailSearchType as T_BOOKS_API_TARGET,
+      query: detailSearchValue,
+    }));
+    setSearchValue('');
     $closeButtonRef.current?.click();
   }, [
-    searchType,
+    detailSearchType,
     detailSearchValue,
+    setQueryParamsForRetrieveBooksApi,
   ]);
 
   return (
@@ -71,22 +106,27 @@ function BookSearchBar() {
             )}>
               <CDRISelect
                 placeholder="제목"
-                value={searchType}
+                value={detailSearchType}
                 onValueChange={searchType => {
-                  setSearchType(searchType);
+                  setDetailSearchType(searchType as T_BOOKS_API_TARGET);
                   setTimeout(() => {
                     $detailSearchInputRef.current?.focus();
                   }, 100);
                 }}
+                onOpenChange={open => {
+                  if (open) {
+                    setDetailSearchType('');
+                  }
+                }}
               >
                 <CDRISelect.Trigger />
                 <CDRISelect.Content>
-                  {searchTypeItems.map(searchType => (
+                  {searchTypeItems.map(({ label, value }) => (
                     <CDRISelect.Item
-                      key={searchType}
-                      value={searchType}
+                      key={value}
+                      value={value}
                     >
-                      {searchType}
+                      {label}
                     </CDRISelect.Item>
                   ))}
                 </CDRISelect.Content>

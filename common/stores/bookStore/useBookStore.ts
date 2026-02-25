@@ -3,23 +3,43 @@
  */
 
 import { 
+  BOOKS_API_TARGET_MAPPER, 
+  TRetrieveBooksApiRequestParams,
+} from '@/common/apis/bookApis/bookApis.type';
+import { 
   createWithPersist,
   StateCreatorWithPersist,
 } from '@/common/utils/zustand/zustand-utils';
-
-const BOOK_SEARCH_HISTORY_MEMORY_LENGTH = 8;
 
 // --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 //
 // BookSearch slice
 //
 // --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+const BOOK_SEARCH_HISTORY_MAX_LENGTH = 8;
+const DEFAULT_QUERY_PARAMS_FOR_RETRIEVE_BOOKS_API: TQueryParamsForRetrieveBooksApi = {
+  size: 10,
+  target: BOOKS_API_TARGET_MAPPER.TITLE,
+  query: '',
+};
+
+type TQueryParamsForRetrieveBooksApi = Omit<
+  TRetrieveBooksApiRequestParams['queryParams'], 
+  'page'
+>;
+
 type TBookSearchSliceState = {
   searchHistories: string[];
+  queryParamsForRetrieveBooksApi: TQueryParamsForRetrieveBooksApi,
 };
 
 type TBookSearchSliceActions = {
   addSearchHistory: (searchHistory: string) => void;
+  setQueryParamsForRetrieveBooksApi: (
+    callback: (
+      queryParams: TQueryParamsForRetrieveBooksApi
+    ) => TQueryParamsForRetrieveBooksApi
+  )=> void;
 };
 
 type TBookSearchSlice = {
@@ -34,6 +54,7 @@ const createBookSearchSlice: StateCreatorWithPersist<
 > = (set) => ({
   bookSearch: {
     searchHistories: [],
+    queryParamsForRetrieveBooksApi: DEFAULT_QUERY_PARAMS_FOR_RETRIEVE_BOOKS_API,
     addSearchHistory: searchHistory => {
       set(s => {
         s.bookSearch.searchHistories = Array
@@ -41,8 +62,15 @@ const createBookSearchSlice: StateCreatorWithPersist<
             searchHistory, 
             ...s.bookSearch.searchHistories,
           ]))
-          .slice(0, BOOK_SEARCH_HISTORY_MEMORY_LENGTH);
+          .slice(0, BOOK_SEARCH_HISTORY_MAX_LENGTH);
       }, undefined, 'addSearchHistory');
+    },
+    setQueryParamsForRetrieveBooksApi: callback => {
+      set(s => {
+        s.bookSearch.queryParamsForRetrieveBooksApi = callback(
+          s.bookSearch.queryParamsForRetrieveBooksApi
+        );
+      }, undefined, 'setQueryParamsForRetrieveBooksApi');
     },
   },
 });
@@ -60,10 +88,17 @@ const createBookSearchSlice: StateCreatorWithPersist<
 //
 // --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 type TBookStore = 
-  & TBookSearchSlice;
+  & TBookSearchSlice
+  & {
+    resetBookStore: () => void;
+  };
 
 const useBookStore = createWithPersist<TBookStore>()((...params) => ({
   ...createBookSearchSlice(...params),
+  resetBookStore: () => {
+    const [set] = params;
+    set(useBookStore.getInitialState());
+  },
 }), {
   name: 'BookStore',
   partialize: state => {

@@ -21,6 +21,7 @@ function NoDataIndicator(props: INoDataIndicatorProps) {
         alt="no-data"
         width={80}
         height={80}
+        loading="eager"
       />
       <div className={cn(
         'cdri-caption text-cdri-secondary'
