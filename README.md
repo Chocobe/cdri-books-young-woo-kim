@@ -422,7 +422,8 @@ zustand middleware 에 대한 구조화 유틸을 작성하여 스토어를 생�
 - [ ] `CDRINoData.tsx`
 
 ### feature 컴포넌트
-- [ ] `BookSearch.tsx`
+- [ ] `BookSearchBar.tsx`
+  - [ ] `primitive/SearchBar.tsx`
 - [ ] `SearchCountIndicator.tsx`
 - [ ] `BookList.tsx`
 - [ ] `BookImage.tsx`
