@@ -195,7 +195,8 @@ function Close(props: ICloseProps) {
     <Popover.Close
       className={cn(
         !asChild && cn(
-          'absolute top-2 right-2'
+          'absolute top-2 right-2',
+          'cursor-pointer'
         ),
         className
       )}

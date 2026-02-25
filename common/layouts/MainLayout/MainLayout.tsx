@@ -13,7 +13,7 @@ function MainLayout(props: PropsWithChildren) {
         <MainLayoutHeader className={cn(
           'sticky top-0'
         )} />
-        <main className="flex flex-col items-center">
+        <main>
           {children}
         </main>
       </div>
