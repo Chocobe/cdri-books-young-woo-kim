@@ -422,6 +422,8 @@ zustand middleware 에 대한 구조화 유틸을 작성하여 스토어를 생�
 - [x] `CDRIPopup.tsx` 
 - [x] `CDRIAccordion.tsx`
 - [ ] `CDRIInfinityLoader.tsx`
+
+### composite 컴포넌트
 - [x] `CDRINoDataIndicator.tsx`
 
 ### feature 컴포넌트
@@ -430,4 +432,9 @@ zustand middleware 에 대한 구조화 유틸을 작성하여 스토어를 생�
 - [ ] `SearchCountIndicator.tsx`
 - [ ] `BookList.tsx`
 - [ ] `BookImage.tsx`
+
+### API 연동
+- [ ] GET: books
+  - [x] bookApis
+  - [ ] useBooksQuery
 </details>
