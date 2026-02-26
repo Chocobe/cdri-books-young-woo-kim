@@ -4,6 +4,7 @@
 
 import { 
   BOOKS_API_TARGET_MAPPER, 
+  TBookModel, 
   TRetrieveBooksApiRequestParams,
 } from '@/common/apis/bookApis/bookApis.type';
 import { 
@@ -77,24 +78,61 @@ const createBookSearchSlice: StateCreatorWithPersist<
 
 // --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 //
-// WishList slice
+// WishBooks slice
 //
 // --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
-// TODO: slice 만들기
+type TWishBooksSliceState = {
+  wishBooksRecord: {
+    [isbn: string]: TBookModel;
+  };
+};
+
+type TWishBooksSliceActions = {
+  toggleWishBook: (book: TBookModel) => void;
+};
+
+type TWishBooksSlice = {
+  wishBooks:
+    & TWishBooksSliceState
+    & TWishBooksSliceActions;
+};
+
+const createWishBooksSlice: StateCreatorWithPersist<
+  TBookStore,
+  TWishBooksSlice
+> = (set) => ({
+  wishBooks: {
+    wishBooksRecord: {},
+    toggleWishBook: book => {
+      set(s => {
+        const isWishBook = s.wishBooks.wishBooksRecord[book.isbn];
+
+        if (isWishBook) {
+          delete s.wishBooks.wishBooksRecord[book.isbn];
+        } else {
+          s.wishBooks.wishBooksRecord[book.isbn] = book;
+        }
+      }, undefined, 'toggleWishBook');
+    },
+  },
+});
 
 // --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 //
-// BookList slice
+// Book Store
 //
 // --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 type TBookStore = 
   & TBookSearchSlice
+  & TWishBooksSlice
   & {
     resetBookStore: () => void;
   };
 
 const useBookStore = createWithPersist<TBookStore>()((...params) => ({
   ...createBookSearchSlice(...params),
+  ...createWishBooksSlice(...params),
+
   resetBookStore: () => {
     const [set] = params;
     set(useBookStore.getInitialState());
@@ -105,6 +143,9 @@ const useBookStore = createWithPersist<TBookStore>()((...params) => ({
     return {
       bookSearch: {
         searchHistories: state.bookSearch.searchHistories,
+      },
+      wishBooks: {
+        wishBooksRecord: state.wishBooks.wishBooksRecord,
       },
     } as TBookStore;
   },
