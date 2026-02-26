@@ -93,6 +93,7 @@ function CDRIButton<TVariant extends TCDRIButtonVariant = 'surface'>(
     <button
       ref={ref}
       className={cn(
+        'justify-center',
         'font-medium rounded-lg transition-all',
         'hover:opacity-80 active:opacity-90',
         variantClassName,
