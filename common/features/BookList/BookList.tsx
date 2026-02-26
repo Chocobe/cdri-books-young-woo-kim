@@ -1,40 +1,38 @@
-import useBookStore from '@/common/stores/bookStore/useBookStore';
-import useBooksInfiniteQuery from '../BookSearchBar/queries/useBooksInfiniteQuery';
 import CDRIAccordion from '@/common/components/ui/CDRIAccordion/CDRIAccordion';
 import BookItem from './components/BookItem';
+import { TBookModel } from '@/common/apis/bookApis/bookApis.type';
 
-function BookList() {
-  const queryParams = useBookStore(state => state.bookSearch.queryParamsForRetrieveBooksApi);
+interface IBookListProps {
+  books: TBookModel[];
+}
+
+function BookList(props: IBookListProps) {
   const {
-    data,
-  } = useBooksInfiniteQuery({
-    queryParams,
-  });
+    books,
+  } = props;
 
   return (
     <CDRIAccordion>
-      {data?.pages.flatMap(page => {
-        return page.documents.map(book => {
-          const {
-            isbn,
-          } = book;
+      {books.map(book => {
+        const {
+          isbn,
+        } = book;
 
-          return (
-            <CDRIAccordion.CustomItem
-              key={isbn}
-              id={isbn}
-            >
-              {props => (
-                <BookItem
-                  key={isbn}
-                  id={isbn}
-                  book={book}
-                  {...props}
-                />
-              )}
-            </CDRIAccordion.CustomItem>
-          );
-        });
+        return (
+          <CDRIAccordion.CustomItem
+            key={isbn}
+            id={isbn}
+          >
+            {props => (
+              <BookItem
+                key={isbn}
+                id={isbn}
+                book={book}
+                {...props}
+              />
+            )}
+          </CDRIAccordion.CustomItem>
+        );
       })}
     </CDRIAccordion>
   );

@@ -15,6 +15,8 @@ import NoDataIndicator from '@/common/components/composite/NoDataIndicator/NoDat
 import { throttle } from 'es-toolkit';
 import MoreDataIndicator from '@/common/components/composite/MoreDataIndicator/MoreDataIndicator';
 
+const NO_DATA_MESSAGE = '검색된 결과가 없습니다.';
+
 function HomePage() {
   const queryParams = useBookStore(state => {
     return state.bookSearch.queryParamsForRetrieveBooksApi;
@@ -82,6 +84,10 @@ function HomePage() {
     error,
   ]);
 
+  const books = data?.pages.flatMap(page => {
+    return page.documents;
+  }) ?? [];
+
   return (
     <div className={cn(
       'mx-auto py-20',
@@ -96,9 +102,9 @@ function HomePage() {
           label="도서 검색 결과"
           count={searchCount}
         />
-        {isSuccess && searchCount === 0
-          ? <NoDataIndicator />
-          : <BookList />
+        {isSuccess && searchCount !== 0
+          ? <BookList books={books} />
+          : <NoDataIndicator message={NO_DATA_MESSAGE} />
         }
 
         {hasNextPage && (

@@ -3,11 +3,13 @@ import Image from 'next/image';
 
 interface INoDataIndicatorProps {
   className?: string;
+  message: string;
 }
 
 function NoDataIndicator(props: INoDataIndicatorProps) {
   const {
     className,
+    message,
   } = props;
 
   return (
@@ -26,7 +28,7 @@ function NoDataIndicator(props: INoDataIndicatorProps) {
       <div className={cn(
         'cdri-caption text-cdri-secondary'
       )}>
-        검색된 결과가 없습니다.
+        {message}
       </div>
     </div>
   );

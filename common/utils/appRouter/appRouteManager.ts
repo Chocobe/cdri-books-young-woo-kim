@@ -8,17 +8,14 @@ interface IAppRouteItem {
  */
 const appRouteItemMapper = {
   LIBRARY: {
-    // FIXME: 페이지 구현 후, 주석 해제하기
-    // path: '/library',
     path: '/',
     displayName: '도서 검색',
   },
   WISH: {
-    // FIXME: 페이지 구현 후, 주석 해제하기
-    // path: '/wish',
-    path: '/playground/combobox',
+    path: '/wish-books',
     displayName: '내가 찜한 책',
   },
+  // TODO: `/playground` 라우터 추가하기
 } satisfies {
   [APP_ROUTE_KEY: string]: IAppRouteItem;
 };
