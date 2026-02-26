@@ -1,4 +1,7 @@
 import { TBookModel } from '@/common/apis/bookApis/bookApis.type';
+import LikeFillIcon from '@/common/assets/svgIcons/LikeFillIcon';
+import LikeLineIcon from '@/common/assets/svgIcons/LikeLineIcon';
+import useBookStore from '@/common/stores/bookStore/useBookStore';
 import cn from '@/common/utils/tailwindcss/cn';
 import Image from 'next/image';
 import { CSSProperties } from 'react';
@@ -9,11 +12,9 @@ const IMAGE_MIN_HEIGHT = 68;
 const IMAGE_MAX_WIDTH = 210;
 const IMAGE_MAX_HEIGHT = 280;
 
-interface IBookItemThumnailProps extends Pick<
-  TBookModel, 
-  'title' | 'thumbnail'
-> {
+interface IBookItemThumnailProps {
   className?: string;
+  book: TBookModel;
   isSelected: boolean;
   transitionDuration?: CSSProperties['transitionDuration'];
 }
@@ -21,11 +22,23 @@ interface IBookItemThumnailProps extends Pick<
 function BookItemThumbnail(props: IBookItemThumnailProps) {
   const {
     className,
-    title,
-    thumbnail,
+    book,
     isSelected,
     transitionDuration,
   } = props;
+
+  const size = {
+    width: isSelected ? '24px' : '16px',
+    height: isSelected ? '24px' : '16px',
+  };
+  const iconStyle: CSSProperties = {
+    transition: 'all',
+    transitionDuration,
+    color: 'var(--color-cdri-red)',
+  };
+
+  const isWishBook = useBookStore(state => !!state.wishBooks.wishBooksRecord[book.isbn]);
+  const toggleWishBook = useBookStore(state => state.wishBooks.toggleWishBook);
 
   return (
     <figure
@@ -41,11 +54,41 @@ function BookItemThumbnail(props: IBookItemThumnailProps) {
       }}
     >
       <Image
-        src={thumbnail}
-        alt={title}
+        src={book.thumbnail}
+        alt={book.title}
         fill
         sizes={`${IMAGE_MIN_WIDTH}px`}
       />
+      <button
+        className={cn(
+          'cursor-pointer transition-all',
+          'absolute',
+          isSelected
+            ? 'top-2 right-2'
+            : 'top-0 right-0'
+        )}
+        style={{
+          transitionDuration,
+        }}
+        onClick={() => {
+          toggleWishBook(book);
+        }}
+      >
+        {isWishBook
+          ? (
+            <LikeFillIcon
+              {...size} 
+              style={iconStyle}
+            />
+          )
+          : (
+            <LikeLineIcon
+              {...size}
+              style={iconStyle}
+            />
+          )
+        }
+      </button>
     </figure>
   );
 }

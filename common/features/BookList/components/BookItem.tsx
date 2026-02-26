@@ -21,7 +21,6 @@ function BookItem(props: IBookItemProps) {
     setIsSelected,
     book: {
       title,
-      thumbnail,
       authors,
       contents,
       price,
@@ -49,8 +48,7 @@ function BookItem(props: IBookItemProps) {
           'flex-none',
           isSelected ? 'mr-8' : 'mr-12'
         )}
-        title={title}
-        thumbnail={thumbnail}
+        book={props.book}
         isSelected={isSelected}
         transitionDuration={TRANSITION_DURATION}
       />
