@@ -106,7 +106,6 @@ function HomePage() {
           ? <BookList books={books} />
           : <NoDataIndicator message={NO_DATA_MESSAGE} />
         }
-
         {hasNextPage && (
           <MoreDataIndicator ref={ref} />
         )}

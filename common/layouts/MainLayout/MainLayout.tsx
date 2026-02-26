@@ -7,7 +7,8 @@ function MainLayout(props: PropsWithChildren) {
 
   return (
     <div className={cn(
-      'w-full h-full overflow-auto'
+      'w-full h-full',
+      'overflow-x-auto overflow-y-scroll'
     )}>
       <div className="mx-auto w-360">
         <MainLayoutHeader className={cn(
