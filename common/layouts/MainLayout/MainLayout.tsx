@@ -11,7 +11,7 @@ function MainLayout(props: PropsWithChildren) {
     )}>
       <div className="mx-auto w-360">
         <MainLayoutHeader className={cn(
-          'sticky top-0'
+          'sticky top-0 z-50'
         )} />
         <main>
           {children}

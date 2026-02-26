@@ -45,7 +45,7 @@ function HomePage() {
   const throttledFetchNextPage = useMemo(() => {
     return throttle(
       fetchNextPage, 
-      1_000, 
+      300, 
       { edges: ['leading'] }
     );
   }, [
@@ -101,13 +101,6 @@ function HomePage() {
           : <BookList />
         }
 
-        {/* <div
-          ref={ref}
-          className={cn(
-            'h-1',
-            'bg-cdri-primary'
-          )}
-        /> */}
         {hasNextPage && (
           <MoreDataIndicator ref={ref} />
         )}
