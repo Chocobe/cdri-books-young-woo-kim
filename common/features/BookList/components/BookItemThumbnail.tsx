@@ -54,10 +54,11 @@ function BookItemThumbnail(props: IBookItemThumnailProps) {
       }}
     >
       <Image
-        src={book.thumbnail}
+        src={book.thumbnail || '/imgs/icon_book.png'}
         alt={book.title}
         fill
         sizes={`${IMAGE_MIN_WIDTH}px`}
+        className="object-cover"
       />
       <button
         className={cn(

@@ -112,7 +112,6 @@ function SearchBar(props: ISearchBarProps) {
         </div>
         {ActionSlot}
       </div>
-
     </div>
   );
 }
