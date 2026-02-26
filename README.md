@@ -147,7 +147,6 @@ TODO:
 ```
 
 
-FIXME: 각 디렉토리 구조 잡은 후, 아래 목록 삭제하기
 - `app/`
   - Next.js 파일 시스템 라우터
 - `app/**/components/ui`
@@ -178,7 +177,6 @@ FIXME: 각 디렉토리 구조 잡은 후, 아래 목록 삭제하기
 - `common/stores`
   - zustand util 만들기 (middleware 통합용 유틸)
   - zustand persist 필요 (localStorage)
-FIXME: //
 
 <br />
 
@@ -276,6 +274,8 @@ UI 컴포넌트의 다양한 variant 를 구현할 때, 각 variant 에 대한 c
 ## 04-07. radix-ui
 
 Headless 컴포넌트 라이브러리인 `radix-ui` 를 사용하였습니다.
+
+각 컴포넌트의 활용과 확장성을 고려하여 Compound component pattern 기반으로 구현하였습니다.
 
 `radix-ui` 를 활용한 UI 컴포넌트는 다음과 같습니다.
 
@@ -398,8 +398,8 @@ zustand middleware 에 대한 구조화 유틸을 작성하여 스토어를 생�
 
 - [ ] UI 컴포넌트 개발 및 유닛 테스트
 - [x] Layout 구현
-- [ ] `도서 검색` 페이지 `feature` 구현
-- [ ] `내가 찜한 책` 페이지 `feature` 구현
+- [x] `도서 검색` 페이지 `feature` 구현
+- [x] `내가 찜한 책` 페이지 `feature` 구현
 
 </details>
 
@@ -421,21 +421,21 @@ zustand middleware 에 대한 구조화 유틸을 작성하여 스토어를 생�
 - [x] `CDRICombobox.tsx`
 - [x] `CDRIPopup.tsx` 
 - [x] `CDRIAccordion.tsx`
-- [ ] `CDRIInfinityLoader.tsx`
+- [x] `CDRIInfinityLoader.tsx`
 
 ### composite 컴포넌트
 - [x] `CDRINoDataIndicator.tsx`
 
 ### feature 컴포넌트
-- [ ] `BookSearchBar.tsx`
+- [x] `BookSearchBar.tsx`
   - [x] `primitive/SearchBar.tsx`
 - [x] `SearchCountIndicator.tsx`
 - [x] `MoreDataIndicator.tsx`
 - [x] `BookList.tsx`
-- [ ] `BookImage.tsx`
+- [x] `BookItemThumbnail.tsx`
 
 ### API 연동
-- [ ] GET: books
+- [x] GET: books
   - [x] bookApis
-  - [ ] useBooksQuery
+  - [x] useBooksQuery
 </details>
