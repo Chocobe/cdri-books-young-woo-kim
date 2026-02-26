@@ -112,7 +112,6 @@ pnpm test
 
 ## 03-01. 폴더 구조
 
-TODO: 
 ```bash
 .
 ├── app
@@ -182,8 +181,20 @@ TODO:
 
 ## 03-02. 주요 코드 설명
 
-TODO:
-- `03-01` 에 대한 개별 주요 구현부, 패턴화 설명하기
+- UI 컴포넌트와 같이 재사용이 빈번한 경우는 JSDoc으로 사용 예시코드를 기록하였습니다.
+- any 타입 없이, 정확한 타입 정의를 통해 타입 안정성과 IDE의 정확한 타입추론이 가능합니다.
+- Compound component pattern을 기반으로 구현하여 활용도를 높이고자 하였습니다.
+- Zustand 는 단일 Store 이지만, Slice pattern 으로 Namespace 개념을 적용하였습니다.
+- 라이브러리를 비롯한 유틸리티는 `common/utils` 하위에 있습니다.
+- 유닛 테스트는 시간 되는만큼 작성하였습니다.
+- 브라우저에서 좌측 상단 타이틀(`CERTICOS BOOKS`) 를 클릭하면 UI 개발 과정에서 활용했던 playground 페이지가 열립니다.
+- React Query 를 사용하므로, Next.js 의 fetch 대신 좀 더 유틸성이 좋은 `Axios` 를 사용하였습니다.
+- `common/apis/apis.type.ts` 에 API request/response 제네릭 타입을 정의하여 구조화를 도모하였습니다.
+- svg 아이콘은 별도의 라이브러리를 사용하지 않고, tsx 파일로 만들었습니다.
+- `features/BookSearchBar` 에서 React Query 구현부가 있습니다. (`useInfiniteQuery()`)
+  - `baseKey.ts` : query, mutation 을 개별 모듈로 생각하였으며, Root Key 를 정의합니다.
+  - `queryKeys.ts` : 서버 상태관리 식별자 역할의 key 를 정의합니다.
+  - `mutationKeys.ts` : 상태 변경 식별자 역할의 key 를 정의합니다.
 
 
 
