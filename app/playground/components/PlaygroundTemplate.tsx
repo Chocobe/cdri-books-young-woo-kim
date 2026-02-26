@@ -13,7 +13,7 @@ function PlaygroundTemplate(props: IPlaygroundTemplateProps) {
   } = props;
 
   return (
-    <div className="w-240 flex flex-col gap-5">
+    <div className="mx-auto my-20 w-240 flex flex-col gap-5">
       <h1 className="cdri-title-1">
         {title}
       </h1>

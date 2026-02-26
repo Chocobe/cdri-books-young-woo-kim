@@ -31,7 +31,9 @@ function MainLayoutHeader(props: IMainLayoutHeaderProps) {
         'text-2xl leading-8 font-bold',
         'flex-1'
       )}>
-        CERTICOS BOOKS
+        <Link href={appRouteManager.PLAYGROUND.path}>
+          CERTICOS BOOKS
+        </Link>
       </div>
       <div className={cn(
         'flex-none',

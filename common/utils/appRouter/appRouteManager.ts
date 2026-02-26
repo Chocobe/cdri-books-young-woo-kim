@@ -15,7 +15,35 @@ const appRouteItemMapper = {
     path: '/wish-books',
     displayName: '내가 찜한 책',
   },
-  // TODO: `/playground` 라우터 추가하기
+  PLAYGROUND: {
+    path: '/playground',
+    displayName: 'Playground',
+  },
+
+  ACCORDION: {
+    path: '/playground/accordion',
+    displayName: 'CDRIAccordion',
+  },
+  BUTTON: {
+    path: '/playground/button',
+    displayName: 'CDRIButton',
+  },
+  INPUT: {
+    path: '/playground/input',
+    displayName: 'CDRIInput',
+  },
+  SELECT: {
+    path: '/playground/select',
+    displayName: 'CDRISelect',
+  },
+  COMBOBOX: {
+    path: '/playground/combobox',
+    displayName: 'CDRICombobox',
+  },
+  POPOVER: {
+    path: '/playground/popover',
+    displayName: 'CDRIPopover',
+  },
 } satisfies {
   [APP_ROUTE_KEY: string]: IAppRouteItem;
 };
