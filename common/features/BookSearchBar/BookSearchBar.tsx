@@ -66,21 +66,30 @@ function BookSearchBar() {
   ]);
 
   const onSubmitDetail = useCallback(() => {
-    if (!detailSearchValue.trim() || !detailSearchType) {
+    if (!detailSearchValue.trim()) {
       return;
     }
 
     setQueryParamsForRetrieveBooksApi(queryParams => ({
       ...queryParams,
-      target: detailSearchType as T_BOOKS_API_TARGET,
+      target: detailSearchType as T_BOOKS_API_TARGET || BOOKS_API_TARGET_MAPPER.TITLE,
       query: detailSearchValue,
     }));
-    setSearchValue('');
+
+    if (!detailSearchType) {
+      setSearchValue(detailSearchValue);
+      setDetailSearchValue('');
+      addSearchHistory(detailSearchValue);
+    } else {
+      setSearchValue('');
+    }
+
     $closeButtonRef.current?.click();
   }, [
     detailSearchType,
     detailSearchValue,
     setQueryParamsForRetrieveBooksApi,
+    addSearchHistory,
   ]);
 
   return (
