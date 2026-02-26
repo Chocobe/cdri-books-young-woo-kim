@@ -13,6 +13,7 @@ import {
 } from 'react';
 import NoDataIndicator from '@/common/components/composite/NoDataIndicator/NoDataIndicator';
 import { throttle } from 'es-toolkit';
+import MoreDataIndicator from '@/common/components/composite/MoreDataIndicator/MoreDataIndicator';
 
 function HomePage() {
   const queryParams = useBookStore(state => {
@@ -100,13 +101,16 @@ function HomePage() {
           : <BookList />
         }
 
-        <div
+        {/* <div
           ref={ref}
           className={cn(
             'h-1',
             'bg-cdri-primary'
           )}
-        />
+        /> */}
+        {hasNextPage && (
+          <MoreDataIndicator ref={ref} />
+        )}
       </div>
     </div>
   );
